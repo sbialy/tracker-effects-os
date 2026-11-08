@@ -1,6 +1,6 @@
 # Notices for the shipped master insert plugins
 
-Ship each `.plg` with this file and the licence texts it names (`licenses/` at the top of the repository).
+Ship each `.plg` with this file and the licence texts it names (`licenses/` at the top of poly-effects-os, `make` copies them next to the files).
 
 ## tape.plg (`fx/ot_tape_plug.c`)
 
@@ -28,7 +28,7 @@ Ship each `.plg` with this file and the licence texts it names (`licenses/` at t
   `licenses/LICENSE-OpenTracker-fx-MIT.txt`.
 - The chorus DSP is `audio/bbd_chorus.h` of OpenTracker 3.x, https://github.com/sandlbn/polyend-tracker-re (branch v3_fixes,
   commit 789d55a4c5e8), Apache License 2.0, text in `licenses/LICENSE-OpenTracker-Apache-2.0.txt`, copy in
-  `synth-open/ot/audio/bbd_chorus.h`. The upstream project ships no NOTICE file.
+  tracker-ff `synth-open/ot/audio/bbd_chorus.h`. The upstream project ships no NOTICE file.
 - Modified: rewritten in C as a stereo float live insert, the delay line inside the plugin instance, the Tone coefficient built
   in `set_param`, the mode a parameter. The source file header lists the changes. Checked against the upstream header: the
   output is within 1 LSB of `bbd::process` on int16 input (Mode I and II, Mix, Width and Tone moved).
@@ -40,17 +40,17 @@ Ship each `.plg` with this file and the licence texts it names (`licenses/` at t
   `licenses/LICENSE-OpenTracker-fx-MIT.txt`.
 - The Pade tangent and the polynomial 2^x are `tanPade` and `fastExp2` of `audio/va_dsp.h` of OpenTracker 3.x,
   https://github.com/sandlbn/polyend-tracker-re (branch v3_fixes, commit 789d55a4c5e8), Apache License 2.0, text in
-  `licenses/LICENSE-OpenTracker-Apache-2.0.txt`, copy in `synth-open/ot/audio/va_dsp.h`.
+  `licenses/LICENSE-OpenTracker-Apache-2.0.txt`, copy in tracker-ff `synth-open/ot/audio/va_dsp.h`.
 - Modified: rewritten in C as a stereo master insert (upstream is a synth slot insert), the settings are plugin parameters,
   plain multiply and add instead of fused multiply add, Mix 0 passes the bus untouched. The source file header lists the
   changes. Checked against the upstream source: the output is within 1 LSB of `PhaserEffect::process` on int16 input in
   Classic and 80s, with Rate, Depth, Feedback, Spread and Mix moved.
 
-## dirt.plg (`fx_dirt_plug.cpp` with `../ff_dirt.cpp`, `../ff_dirt_ctl.cpp`)
+## dirt.plg (`fx_dirt_plug.cpp` with the firmware's `ff_dirt.cpp`, `ff_dirt_ctl.cpp`, vendored in `sdk/files/synth-open/`)
 
 - The firmware's built-in Dirt (a port of the DIRT module of opentracker-fx, `modules/dirt/src/dirt.cpp`, commit 6e5a7da,
   Copyright (c) 2026 Marcin Spoczynski, MIT, `licenses/LICENSE-OpenTracker-fx-MIT.txt`) behind the plugin wrapper.
 
 ## The SDK
 
-`plug_abi.h`, `plug_rt.c` and `plug.ld` are linked into every plugin: MIT, `synth-open/plug/LICENSE`.
+`plug_abi.h`, `plug_rt.c` and `plug.ld` of tracker-ff are linked into every plugin: MIT, `licenses/LICENSE-tracker-ff-MIT.txt`.
