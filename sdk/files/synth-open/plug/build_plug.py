@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a Tracker FF runtime plugin (.plg, ABI 1, spike).
+"""Build a Tracker FF runtime plugin (.plg, ABI 1).
 
     build_plug.py --id ff.dirt --kind master --out dirt.plg src1.cpp src2.cpp ... [-I dir] [--opt "-O2 -ffp-contract=off"]
 
@@ -11,7 +11,7 @@ Compile for the Cortex-M4F, link at address 0 with plug.ld and --emit-relocs, th
 --logo x.plgi appends a logo record (synth-open/plug_logo.h, made by tools/make_plgi.py) after the rebase table and puts its
 file offset in plug_manifest.reserved[0]. The record has its own CRC, the file CRC does not cover it.
 Per source flags (--src-opt NAME=FLAGS): a port of firmware DSP is only bit identical when its objects are built with the
-firmware object's own flags (the vfma gotcha, design section 11, phase 1b).
+firmware object's own flags (a fused vfma would otherwise differ from the firmware build).
 """
 import argparse
 import os

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Host harness for a .plg (spike): the firmware loader re-done in Python, the plugin's ARM code run in Unicorn.
+"""Host harness for a .plg: the firmware loader re-done in Python, the plugin's ARM code run in Unicorn.
 
     python -I emu_plug.py <file.plg> [--base 0x1FFF0BD0] [--blocks 64] [--wav out.wav] [--inwav in.wav] [--param 0=2.5] [--raw PREFIX]
 

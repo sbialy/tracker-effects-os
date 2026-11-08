@@ -128,8 +128,8 @@ def main():
     ap.add_argument("--out")
     ap.add_argument("--only")
     ap.add_argument("--inserts-plg", help="the finished .plg set (build.py): its sha256 goes into the manifests")
-    ap.add_argument("--emsdk", default=os.environ.get("EMSDK") or next((p for p in (os.path.join(ROOT, "agt", "emsdk"), os.path.expanduser("~/prj/poly/agt/emsdk")) if os.path.isdir(p)), "emsdk"),
-                    help="emsdk 6.0.13 (default: $EMSDK, <repo>/agt/emsdk, ~/prj/poly/agt/emsdk)")
+    ap.add_argument("--emsdk", default=os.environ.get("EMSDK") or next((p for p in (os.path.join(ROOT, "agt", "emsdk"), os.path.join(ROOT, "..", "tracker-ff", "agt", "emsdk")) if os.path.isdir(p)), "emsdk"),
+                    help="emsdk 6.0.13 (default: $EMSDK, <repo>/agt/emsdk, ../tracker-ff/agt/emsdk)")
     ap.add_argument("--wasm-abi-major", type=int, help="claim another module ABI major (refusal test only)")
     a = ap.parse_args()
     t = fxbuild.table()
