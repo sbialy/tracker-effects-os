@@ -1,18 +1,18 @@
-# poly-effects-os
+# tracker-effects-os
 
 The public master insert plugins of tracker-ff (the custom firmware for the Polyend Tracker): Dirt, Tape, Lo-Fi, BBD and Phaser, ports
 of the OpenTracker fx modules. Each is built into a device file (`<id>.plg`, card folder `Plugins/Master/`) and a browser file for the
-poly-editor (`<id>.wasm` plus the manifest `<id>.json`).
+browser editor (`<id>.wasm` plus the manifest `<id>.json`).
 
 tracker-ff 1.2.0 is split into five repositories:
 
 | Repository | Holds |
 |---|---|
 | tracker-ff | the firmware: plugin host, plugin SDK, the built-in engines ACD FAT VAP WTFM PERC CHIP, `.ptfx` effects |
-| poly-engines-os | the public synth engine plugins (open source) |
-| poly-engines | the private synth engine plugins (PHZ, PLK, FORM, FLUX, freeware binaries only) |
-| poly-effects-os (this one) | the public master insert plugins (open source) |
-| poly-effects | the private master insert plugins Console, Tube (freeware binaries only) |
+| tracker-engines-os | the public synth engine plugins (open source) |
+| tracker-engines | the private synth engine plugins (PHZ, PLK, freeware binaries only) |
+| tracker-effects-os (this one) | the public master insert plugins (open source) |
+| tracker-effects | the private master insert plugins Console, Tube (freeware binaries only) |
 
 The firmware pins a release of every module repository in its `engines/external.lock.json` and checks the published files against
 the plugin ids it keeps in `engines/engines.json`.

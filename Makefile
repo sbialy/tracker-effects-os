@@ -1,4 +1,4 @@
-# poly-effects-os: the public master insert plugins of tracker-ff (OpenTracker fx ports). Works with Apple make 3.81.
+# tracker-effects-os: the public master insert plugins of tracker-ff (OpenTracker fx ports). Works with Apple make 3.81.
 #
 #   make TOOLCHAIN=/path/to/arm-none-eabi- [PY=python-with-unicorn]   the set into build/set (.plg, NOTICE.md, licences, SET.json, SHA256SUMS)
 #   make verify [OUT=...]                                               SHA256SUMS, SET.json, header, CRC and ABI of a finished set

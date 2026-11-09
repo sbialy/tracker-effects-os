@@ -1,6 +1,6 @@
 # Notices
 
-poly-effects-os holds the public master insert plugins of tracker-ff. The notice of every insert (upstream, commit, licence, what was
+tracker-effects-os holds the public master insert plugins of tracker-ff. The notice of every insert (upstream, commit, licence, what was
 changed) is in `src/synth-open/plug/fx/NOTICE.md`. `make` writes the sections of the built inserts into the `NOTICE.md` next to the
 `.plg` files and copies the licence texts they name from `licenses/`.
 

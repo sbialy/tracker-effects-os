@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Standalone build of the public master insert .plg set of poly-effects-os. Needs no firmware build and writes nothing into the
+"""Standalone build of the public master insert .plg set of tracker-effects-os. Needs no firmware build and writes nothing into the
 source tree.
 
     TOOLCHAIN=.../arm-none-eabi- python3 build.py build --out DIR [--py PYTHON] [--only dirt,tape]
@@ -175,7 +175,7 @@ def build(a):
     ship_notices(out, rows)
     gcc = run([tc + "gcc", "--version"]).splitlines()[0]
     with open(os.path.join(out, "SET.json"), "w") as f:
-        json.dump({"set": "poly-effects-os", "set_version": t["set_version"], "compiler": gcc, "abi": "%d.%d" % (maj, mi),
+        json.dump({"set": "tracker-effects-os", "set_version": t["set_version"], "compiler": gcc, "abi": "%d.%d" % (maj, mi),
                    "sdk_sha256": sdk_digest(), "emulator_checks": "done" if emu_ok else "skipped (the Python has no unicorn or --no-emu)",
                    "inserts": recs}, f, indent=1)
         f.write("\n")

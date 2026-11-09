@@ -7,7 +7,7 @@ paths. sdk/SOURCE names the tracker-ff commit the copy was taken from.
                                             committing: a changed header can change the .plg bytes, bump the module versions then.
 
 The set of files is what sdk/files/ holds: the files named in sdk/headers.txt and sdk/tools.txt plus synth-open/plug/LICENSE (and,
-in poly-effects-os, the Dirt kernel the firmware also builds in). A build never reads FW, so a clone of this repository alone builds.
+in tracker-effects-os, the Dirt kernel the firmware also builds in). A build never reads FW, so a clone of this repository alone builds.
 """
 import os
 import subprocess

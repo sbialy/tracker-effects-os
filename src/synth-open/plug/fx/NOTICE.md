@@ -1,6 +1,6 @@
 # Notices for the shipped master insert plugins
 
-Ship each `.plg` with this file and the licence texts it names (`licenses/` at the top of poly-effects-os, `make` copies them next to the files).
+Ship each `.plg` with this file and the licence texts it names (`licenses/` at the top of tracker-effects-os, `make` copies them next to the files).
 
 ## tape.plg (`fx/ot_tape_plug.c`)
 

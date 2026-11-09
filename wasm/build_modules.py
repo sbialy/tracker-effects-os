@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The browser twin of the master insert plugins of poly-effects-os: one .wasm module and one manifest per insert (plug_wasm.h of the SDK).
+"""The browser twin of the master insert plugins of tracker-effects-os: one .wasm module and one manifest per insert (plug_wasm.h of the SDK).
 
     python3 wasm/build_modules.py --out DIR [--only dirt,tape] [--inserts-plg DIR] [--emsdk DIR] [--wasm-abi-major N]
 
@@ -29,7 +29,7 @@ import build as fxbuild  # noqa: E402  (stage, table, abi_of)
 import wasm_common as wc  # noqa: E402
 
 SO = os.path.join(ROOT, "sdk", "files", "synth-open")   # the vendored SDK headers (plug_abi.h, plug_wasm.h)
-SOURCE_REPO = "poly-effects-os"
+SOURCE_REPO = "tracker-effects-os"
 FIELDS = ("max_voices", "volume_param", "work_bytes", "slot_fx", "params", "sections", "macros")
 
 
