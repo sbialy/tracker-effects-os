@@ -71,7 +71,8 @@ enum
     PLUG_EXT_TAIL = 2,    // plug_ext_tail (declared below, the current host does not ask for it yet)
     PLUG_EXT_SYNTH = 3,   // plug_ext_synth (declared below): the C form of ISynthEngine, PLUG_KIND_SYNTH plugins
     PLUG_EXT_TEMPO = 4,   // reserved: set_tempo(inst, bpm) for synced inserts
-    PLUG_EXT_CHORD = 5,   // plug_ext_chord (declared below, ABI 1.2): a synth engine that plays a MIDI Chord step as one voice
+    // 5 belongs to PLUG_EXT_FILES (plug_host.query, the scw-host line, host level 2): never reuse it here
+    PLUG_EXT_CHORD = 6,   // plug_ext_chord (declared below, ABI 1.2): a synth engine that plays a MIDI Chord step as one voice
 };
 
 typedef struct
@@ -294,11 +295,16 @@ typedef struct
 // The live keys and MIDI in play one note-on per key as always: in Para the engine sounds the patch's Chord on each.
 // Older hosts (ABI 1.1, firmware 1.3.0 and before) refuse an enum parameter with more than 65 values. A plugin that must also
 // load there declares the Chord parameter numeric (PLUG_FMT_INT, 0 to PLUG_CHORD_COUNT - 1), it reads the same value.
+// Strum (a tail field, read only when struct_size covers it): strum_param is an integer parameter from -63 to 63, the time between
+// two successive chord notes in units of 2 ms, + up (the lowest note first), - down. The host puts a Strum FX of the step into it
+// for that note-on only, like the chord. PLUG_CHORD_NO_STRUM (or a shorter struct): the engine plays every chord unstrummed.
+#define PLUG_CHORD_NO_STRUM 0xFFFFFFFFu
 typedef struct
 {
     uint32_t struct_size;
     uint32_t param_index;     // the Chord parameter (plug_chord.h order)
     uint32_t mode_param;      // the Chord Mode parameter (0 Poly, 1 Para)
+    uint32_t strum_param;     // tail: the Strum parameter, or PLUG_CHORD_NO_STRUM
 } plug_ext_chord;
 
 struct plug_host
