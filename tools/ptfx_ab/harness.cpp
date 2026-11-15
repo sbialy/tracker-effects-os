@@ -208,6 +208,13 @@ extern "C" int run_case(uint32_t effectIdx, uint32_t caseIdx)
         else if (ps >= 3) v[1] = quant(1, 40, 1, rnd());
         else if (ps == 0) v[1] = 20;
     }
+    // Delay cap cases (case 240 and up): feedback at its maximum and a long time, the tail (last voice - 1) * time goes far past the edit buffer
+    // half (1,966,080 samples) and both sides must stop at the same length with the same samples (voice count 99 at most)
+    if (effectIdx == 2 && caseIdx >= 240) {
+        static const float kCapTime[3] = { 1000, 5000, 220 };
+        v[0] = E.hi[0];
+        v[1] = kCapTime[caseIdx - 240];
+    }
     R.nparams = E.nparams;
     for (int i = 0; i < 12; i++) R.params[i] = v[i];
 

@@ -22,6 +22,7 @@ from unicorn.arm_const import UC_ARM_REG_C1_C0_2, UC_ARM_REG_FPEXC, UC_ARM_REG_L
 NAMES = ["amplifier", "overdrive", "delay", "bitcrusher", "chorus", "flanger", "equalizer", "limiter", "compressor"]
 FILES = ["se_amplifier", "se_overdrive", "se_delay", "se_bitcrusher", "se_chorus", "se_flanger", "se_equalizer", "se_limiter", "se_compressor"]
 CASES = 240
+CAP_CASES = 3   # delay only, cases 240 to 242: tails past the edit buffer half (harness.cpp)
 RAM, RAM_SIZE = 0x20000000, 0x2800000
 PLUG, TRAP = 0x23000000, 0x23F00000
 RES_FMT = "<4I5I2I12f4I"
@@ -85,7 +86,7 @@ def main():
     ap.add_argument("--verbose", action="store_true")
     a = ap.parse_args()
     only = [n for n in a.only.split(",") if n] or NAMES
-    jobs = [(a.elf, a.nm, a.ptfx, NAMES.index(n), c) for n in only for c in range(CASES)]
+    jobs = [(a.elf, a.nm, a.ptfx, NAMES.index(n), c) for n in only for c in range(CASES + (CAP_CASES if n == "delay" else 0))]
     with Pool(a.jobs) as p:
         sin_res = p.apply_async(run_one, ((a.elf, a.nm, a.ptfx, 99, 0),))
         results = p.map(run_one, jobs, chunksize=1)
@@ -124,7 +125,7 @@ def main():
                     case, lenA, lenB, ndiff, maxabs, first if first != 0xffffffff else -1, KINDS[inKind], inLen,
                     [round(x, 4) for x in params[:npar]], extra))
         print("%-11s %2d cases: %2d bit identical, %2d different, %2d other" % (n, len(rs), ident, diff, other))
-        for line in notes[:12 if not a.verbose else 100]:
+        for line in notes[:12 if not a.verbose else 1000]:
             print("    " + line)
         bad += diff + other
     print("RESULT", "PASS" if bad == 0 else "FAIL (%d cases)" % bad)
