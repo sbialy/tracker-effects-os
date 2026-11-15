@@ -8,6 +8,7 @@ The files that use double (the firmware does too, as soft double) link libgcc an
 """
 import argparse
 import hashlib
+import shutil
 import os
 import subprocess
 import sys
@@ -48,6 +49,8 @@ def main():
         if r.returncode:
             sys.exit("FAILED %s\n%s%s" % (n, r.stdout, r.stderr))
         print("%-20s %6d B  sha256 %s" % ("se_%s.ptfx" % n, os.path.getsize(dst), hashlib.sha256(open(dst, "rb").read()).hexdigest()[:16]))
+    # the notice travels with the files: tracker-ff lists it in its lock and lays it out under licenses/plugins/
+    shutil.copyfile(os.path.join(ROOT, "src", "ptfx", "NOTICE.md"), os.path.join(a.out, "NOTICE-ptfx.md"))
 
 
 if __name__ == "__main__":
