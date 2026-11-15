@@ -25,6 +25,8 @@ the plugin ids it keeps in `engines/engines.json`.
 | `src/synth-open/plug/fx_dirt_plug.cpp` | the Dirt plugin wrapper around the firmware's Dirt kernel |
 | `src/synth-open/plug/dirt_*_check.py` | Dirt checks run by the build (no DC step entering Asym, zero in gives zero out) |
 | `src/synth-open/plug/fx/NOTICE.md` | the notice of every insert |
+| `src/ptfx/se_*.c` | the nine Sample Editor effects that tracker-ff 1.4.0 moved out of the firmware image into card files: Amplifier, Overdrive, Delay, Bitcrusher, Chorus, Flanger, Equalizer, Limiter, Compressor (`.ptfx`, card folder `Effects/`). Ports of `core/effector` of tracker-ff, bit identical to the built in effects |
+| `tools/build_ptfx.py`, `tools/ptfx_ab/` | the `.ptfx` build, and the A/B of every port against the built in effect of the firmware under Unicorn |
 | `sdk/files/` | a pinned copy of tracker-ff files: the plugin SDK (`plug_abi.h`, `plug_rt.c`, `plug.ld`, `build_plug.py`, `emu_plug.py`, `plug_wasm.h`, `plug_rt_wasm.c`) and the Dirt kernel (`ff_dirt.h`, `ff_dirt.cpp`, `ff_dirt_ctl.cpp`). `sdk/SOURCE` names the tracker-ff commit |
 | `effects.json` | the table: plugin id, version, flags, the expected emulator checksums, licence |
 | `build.py`, `Makefile` | the `.plg` set build and its checks |

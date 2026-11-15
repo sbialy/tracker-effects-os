@@ -1,1 +1,2 @@
 tracker-ff-v1.2.0 tracker-ff release the files of sdk/files/ were copied from (tools/sdk_sync.py sync writes the commit)
+editor-fx-sdk/ptfx_builder.py and editor-fx-sdk/tracker_plugin.h: tracker-ff effector-ptfx c997e8e (the other files above keep the tracker-ff-v1.2.0 copy)
